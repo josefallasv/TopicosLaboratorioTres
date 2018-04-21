@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Lab03.Models.Book>
+
+@{
+    ViewData["Title"] = "Libros";
+}
+
+<h2>Libros</h2>
+
+@using (Html.BeginForm())
+{
+    <p> 
+        Digita una parte del nombre de un libro y muestra una lista con los datos de todos los ejemplares cuyo nombre contiene esa hilera de caracteres:
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nombre original
+            </th>
+            <th>
+                Nombre traducido
+            </th>
+            <th>
+                Año de edicion
+            </th>
+            <th>
+                Numero de edicion
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginalTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TranslatedTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditionYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditionNumber)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

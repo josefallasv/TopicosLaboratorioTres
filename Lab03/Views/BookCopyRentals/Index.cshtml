@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Lab03.Models.BookCopyRental>
+
+@{
+    ViewData["Title"] = "Prestamo de ejemplares";
+}
+
+<h2>Prestamo de ejemplares</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Digita un id de usuario y muestra una lista de todos los ejemplares que ha solicitado:
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID Ejemplar
+            </th>
+            <th>
+                ID Cliente
+            </th>
+            <th>
+                Se presta el dia
+            </th>
+            <th>
+                Se debe devolver el dia
+            </th>
+            <th>
+                Se devolvio el dia
+            </th>
+            <th>
+                Perdido
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookCopyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lost)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

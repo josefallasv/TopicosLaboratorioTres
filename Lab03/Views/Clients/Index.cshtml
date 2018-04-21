@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Lab03.Models.Client>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h2>Clientes</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Digita una parte del nombre de un cliente y muestra una lista con los datos de todos los clientes cuyo nombre contiene esa hilera de caracteres: 
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Fecha de nacimiento
+            </th>
+            <th>
+                Sexo
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

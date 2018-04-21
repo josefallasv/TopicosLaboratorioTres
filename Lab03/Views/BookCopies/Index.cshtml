@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Lab03.Models.BookCopy>
+
+@{
+    ViewData["Title"] = "Ejemplares";
+}
+
+<h2>
+    Ejemplares
+</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+       Digita un id de libro y muestra una lista de todos los ejemplares que contiene:
+       @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                ID Libro
+            </th>
+            <th>
+                Fecha de donacion
+            </th>
+            <th>
+                Disponible
+            </th>
+            <th>
+                Idioma
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableForRental)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
